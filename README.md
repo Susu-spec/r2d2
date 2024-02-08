@@ -6,4 +6,3 @@ Utilizes the Web Audio API to alter audio features directly within the browser e
 ## Tools
 - React.js
 - Web Audio API
-- + me
