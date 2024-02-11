@@ -22,9 +22,14 @@ const changeOsc1Freq = (e) => {
 
   return (
     <div className="App">
-      <h1>Sliders</h1>
-      <button onClick={()=> osc1.start()}>Start</button>
-      <button onClick={()=> osc1.stop()}>Stop</button>
+      <div className="background"></div>
+      <div className="text-box">
+        <h1>Sliders</h1>
+      </div>
+      <div className="Buttons">
+        <button onClick={()=> osc1.start()}>Start</button>
+        <button onClick={()=> osc1.stop()}>Stop</button>
+      </div>
       <Osc1 changeFreq={changeOsc1Freq} freq={frequency}/>
     </div>
   );
