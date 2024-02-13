@@ -22,6 +22,7 @@ body {
     }
   }
   .Buttons {
+    margin: .7rem 0 0 0;
     display: flex;
     width: 100%;
     justify-content: center; 
@@ -34,38 +35,40 @@ body {
     border-radius: 5px;
     border-color: unset;
   }
-  .oscillator {
+  .oscillator, .filter {
     margin: 0 auto;
     padding: 0 1rem;
     width: 100%;
     text-align: center;
-    .control {
-       margin: 2.4rem 0;
-       h2 {
-        margin: 0 0 .5rem 0;
-       }
-       .param {
-          margin: 0 0 2rem 0;
-          h3 {
-            margin: 0 0 .8rem 0;
-          }
-          input {
-            width: 80%;
-            cursor: pointer;
-          }
-          button {
-            padding: .3rem .5rem;
-          }
+  }
+  .control {
+      margin: 2.4rem 0;
+      h2 {
+      margin: 0 0 .5rem 0;
+      }
+      .param {
+        margin: 0 0 2rem 0;
+        h3 {
+          margin: 1.8rem 0 .8rem 0;
         }
-        .active {
-          background: #575757;
-          border: #575757;
+        input {
+          width: 60%;
+          cursor: pointer;
+        }
+        button {
+          padding: .3rem .5rem;
         }
       }
-    
+      .param-filter {
+        margin: .8rem 0 .4rem 0;
+      }
+      .active {
+        background: #575757;
+        border: #575757;
+      }
+    } 
   }
   
-}
 
 .background {
   position: fixed;

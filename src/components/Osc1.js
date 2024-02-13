@@ -5,7 +5,7 @@ function Osc1({change, settings, changeType}) {
   return (
     <div className="oscillator"> 
       <div className="control">
-        <h2>osc 1</h2>
+        <h2>Oscillator</h2>
         <div className="param">
           <h3>Frequency</h3>
           <input 
@@ -26,7 +26,7 @@ function Osc1({change, settings, changeType}) {
           </input>
         </div>
         <div className="param">
-          <h3>wave</h3>
+          <h3>Wave</h3>
           <button id="sine" onClick={changeType} className={`${type === 'sine' && 'active'}`}>sine</button>
           <button id="triangle" onClick={changeType} className={`${type === 'triangle' && 'active'}`}>triangle</button>
           <button id="square" onClick={changeType} className={`${type === 'square' && 'active'}`}>square</button>
