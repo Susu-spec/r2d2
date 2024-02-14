@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { CTX } from '../context/Store';
 
-function Osc1({change, settings, changeType}) {
-  let {type, frequency, detune} = settings;
+function Osc1 () {
+  const [appState, updateState] = useContext(CTX);
+
+  let {type, frequency, detune} = appState.osc1Settings;
+
+  const change = (e) => {
+    let {id, value} = e.target;
+    updateState({type: "CHANGE_OSC1", payload: {id, value}});
+  }
+
+  const changeType = (e) => {
+    let {id} = e.target;
+    updateState({type: "CHANGE_OSC1_TYPE", payload: {id}});
+  }
+
   return (
     <div className="oscillator"> 
+
       <div className="control">
         <h2>Oscillator</h2>
+        <div className="Buttons">
+          <button onClick={()=> updateState({type: "START_OSC"})}>Start</button>
+          <button onClick={()=> updateState({type: "STOP_OSC"})}>Stop</button>
+        </div>
         <div className="param">
           <h3>Frequency</h3>
           <input 
@@ -38,4 +57,4 @@ function Osc1({change, settings, changeType}) {
   )
 }
 
-export default Osc1
+export default Osc1;

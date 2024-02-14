@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CTX } from "../context/Store";
 
-const Filter = ({change, settings, changeType}) => {
-    let {type, detune, frequency, gain, Q} = settings;
+const Filter = () => {
+    const [appState, updateState] = useContext(CTX);
+
+    let {type, frequency, detune, gain, Q} = appState.filterSettings;
+
+    const change = (e) => {
+        let {id, value} = e.target;
+        updateState({type: "CHANGE_FILTER", payload: {id, value}});
+    }
+
+    const changeType = (e) => {
+        let {id} = e.target;
+        updateState({type: "CHANGE_FILTER_TYPE", payload: {id}});
+    }
+
     return (
         <div className='control filter'>
             <h2>Filter</h2>
