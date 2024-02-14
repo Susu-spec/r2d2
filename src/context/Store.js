@@ -31,10 +31,10 @@ export function reducer(state, action ) {
             return {...state, osc1Settings: {...state.osc1Settings, type: id}};
         case 'CHANGE_FILTER':
             osc1[id].value = value;
-            return {...state, osc1Settings: {...state.filterSettings, [id]: value}};
+            return {...state, filterSettings: {...state.filterSettings, [id]: value}};
         case 'CHANGE_FILTER_TYPE':
             osc1.type = id;
-            return {...state, osc1Settings: {...state.filterSettings, type: id}};
+            return {...state, filterSettings: {...state.filterSettings, type: id}};
         default: 
             console.log('reduce error, action: ', action);
             return { ...state };
