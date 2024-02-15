@@ -17,8 +17,7 @@ function Osc1 () {
   }
 
   return (
-    <div className="oscillator"> 
-
+    <div className="oscillator">
       <div className="control">
         <h2>Oscillator</h2>
         <div className="Buttons">

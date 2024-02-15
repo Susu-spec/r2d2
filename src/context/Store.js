@@ -13,32 +13,35 @@ filter.connect(out);
 const CTX = React.createContext();
 export { CTX };
 
-
+// refactor useState hooks
 export function reducer(state, action ) {
+    // if no payload
     let {id, value} = action.payload || {};
     switch(action.type){
-        case 'START_OSC': //hmm?
+        case 'START_OSC': 
             osc1.start();
-            return { ...state }; //for who?
+            return { ...state }; 
         case 'STOP_OSC':
             osc1.stop();
             return { ...state };
         case 'CHANGE_OSC1':
             osc1[id].value = value;
-            return {...state, osc1Settings: {...state.osc1Settings, [id]: value}};
+            // return new state
+            return {...state, osc1Settings: {...state.osc1Settings, id: value}};
         case 'CHANGE_OSC1_TYPE':
             osc1.type = id;
             return {...state, osc1Settings: {...state.osc1Settings, type: id}};
         case 'CHANGE_FILTER':
-            osc1[id].value = value;
-            return {...state, filterSettings: {...state.filterSettings, [id]: value}};
+            filter[id].value = value;
+            return {...state, filterSettings: {...state.filterSettings, id: value}};
         case 'CHANGE_FILTER_TYPE':
-            osc1.type = id;
+            filter.type = id;
             return {...state, filterSettings: {...state.filterSettings, type: id}};
-        default: 
+        default:
             console.log('reduce error, action: ', action);
             return { ...state };
     }
+   
 }
 
 export default function Store(props) {
@@ -48,6 +51,7 @@ export default function Store(props) {
             detune: osc1.detune.value,
             type: osc1.type
         },
+
         filterSettings: {
             frequency: filter.frequency.value,
             detune: filter.detune.value,
