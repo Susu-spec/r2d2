@@ -16,8 +16,12 @@ export { CTX };
 // refactor useState hooks
 export function reducer(state, action ) {
     // if no payload
-    let {id, value} = action.payload || {};
+    let {id, value, note, freq} = action.payload || {};
     switch(action.type){
+        case 'MAKE_OSC':
+            return{ ...state };
+        case 'KILL_OSC':
+            return{ ...state };
         case 'START_OSC': 
             osc1.start();
             return { ...state }; 
@@ -36,7 +40,8 @@ export function reducer(state, action ) {
                 };
         case 'CHANGE_OSC1_TYPE':
             osc1.type = id;
-            return {...state, 
+            return {
+                    ...state, 
                     osc1Settings: {
                         ...state.osc1Settings, 
                         type: id
