@@ -1,7 +1,9 @@
 import React from 'react';
 import Osc1 from "./components/Osc1";
 import Filter from "./components/Filter";
-import './App.scss';
+import Keyboard from "./components/Keyboard";
+
+import './App.scss'; 
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
       </div>
       <Osc1 /> 
       <Filter />
+      <Keyboard />
     </div>
   );
 }
