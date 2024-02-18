@@ -9,8 +9,8 @@ const Keyboard = () => {
     useEffect(() => {
         const keyboard = new QwertyHancock({
             id: "keyboard",
-            width: "450",
-            height: "50",
+            width: "374",
+            height: "65",
             octaves: 2,
             startNote: 'C4',
         });
@@ -23,8 +23,8 @@ const Keyboard = () => {
     }, []);
 
   return (
-    <div>
-        <div id="keyboard"></div>
+    <div className='keyboard'>
+        <div id="keyboard" ></div>
     </div>
   )
 }

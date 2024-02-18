@@ -20,17 +20,18 @@ export default class Osc {
         this.osc.start();
         this.start();
     }
-    // start method of this object
+    // start method of the object
     start(){
-        let {currentTime} = this.actx;
+        let { currentTime } = this.actx;
         this.gateGain.gain.cancelScheduledValues(currentTime);
         this.gateGain.gain.setValueAtTime(0, currentTime + this.easing);
         this.gateGain.gain.linearRampToValueAtTime(1, currentTime + this.envelope.attack + this.easing);
         this.gateGain.gain.linearRampToValueAtTime(this.envelope.sustain, currentTime + this.envelope.attack + this.envelope.decay + this.easing);
     }
 
+    // stop method of the object
     stop(){
-        let {currentTime} = this.actx;
+        let { currentTime } = this.actx;
         this.gateGain.gain.cancelScheduledValues(currentTime);
         this.gateGain.gain.setTargetAtTime(0, currentTime, this.envelope.release + this.easing);
         setTimeout(() => {

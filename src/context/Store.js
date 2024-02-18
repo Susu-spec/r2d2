@@ -14,17 +14,30 @@ filter.connect(out);
 const CTX = React.createContext();
 export { CTX };
 
+let nodes = [];
+
 // refactor useState hooks
 export function reducer(state, action ) {
     // if no payload
     let {id, value, note, freq} = action.payload || {};
     switch(action.type){
         case 'MAKE_OSC':
-            const newOsc = new Osc(actx, "triangle", freq, 0, null, gain1);
+            const newOsc = new Osc(actx, "triangle ", freq, 0, null, gain1);
             newOsc.start();
+            nodes.push(newOsc);
             console.log('make osc, note and freq: ', note, freq);
             return{ ...state };
         case 'KILL_OSC':
+            let newNodes = [];
+            nodes.forEach(node => {
+                if(Math.round(node.osc.frequency.value) === Math.round(freq)){
+                    node.stop();
+                }
+                else {
+                    newNodes.push(node);
+                }
+            })
+            nodes = newNodes;
             console.log('make osc, note and freq: ', note, freq);
             return{ ...state };
             

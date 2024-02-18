@@ -36,7 +36,7 @@ const Filter = () => {
                 <h3>Gain</h3>
                 <input value={gain} type="range" onChange={change} id="gain" max="10"/>
             </div>
-            <div className='param'>
+            <div className='param param-button'>
                 <button id="lowpass" onClick={changeType} className={`${type === 'lowpass' && 'active'}`}>lowpass</button>
                 <button id="highpass" onClick={changeType} className={`${type === 'highpass' && 'active'}`}>highpass</button>
                 <button id="notch" onClick={changeType} className={`${type === 'notch' && 'active'}`}>notch</button>

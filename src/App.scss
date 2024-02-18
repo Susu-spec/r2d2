@@ -58,17 +58,31 @@ body {
         button {
           padding: .3rem .5rem;
         }
+        
       }
       .param-filter {
         margin: .8rem 0 .4rem 0;
+        
       }
       .active {
         background: #575757;
         border: #575757;
       }
-    } 
-    #keyboard {
+      .param-button {
+        margin: 2rem .2rem 3.8rem .2rem;
+        button {
+          margin: .6rem;
+        }
+      }
+
+    }
+    .keyboard {
       width: 100%;
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   
