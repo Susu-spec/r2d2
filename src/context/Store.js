@@ -1,4 +1,5 @@
 import React from "react";
+import Osc from './Osc';
 
 let actx = new AudioContext();
 let out = actx.destination;
@@ -19,9 +20,14 @@ export function reducer(state, action ) {
     let {id, value, note, freq} = action.payload || {};
     switch(action.type){
         case 'MAKE_OSC':
+            const newOsc = new Osc(actx, "triangle", freq, 0, null, gain1);
+            newOsc.start();
+            console.log('make osc, note and freq: ', note, freq);
             return{ ...state };
         case 'KILL_OSC':
+            console.log('make osc, note and freq: ', note, freq);
             return{ ...state };
+            
         case 'START_OSC': 
             osc1.start();
             return { ...state }; 
