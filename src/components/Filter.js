@@ -8,6 +8,7 @@ const Filter = () => {
 
     const change = (e) => {
         let {id, value} = e.target;
+        console.log("id and value: ", id, value);
         updateState({type: "CHANGE_FILTER", payload: {id, value}});
     }
 
@@ -30,7 +31,7 @@ const Filter = () => {
             
             <div className='param'>
                 <h3>Sound Quality</h3>
-                <input value={Q} type="range" onChange={change} id="Q" max="10"/>
+                <input value={Q} type="range" onChange={change} id="Q" max="100"/>
             </div>
             <div className='param'>
                 <h3>Gain</h3>

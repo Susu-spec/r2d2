@@ -1,13 +1,14 @@
 import React from "react";
 import Osc from './Osc';
+// import ADSR from './ADSR';
 
 let actx = new AudioContext();
 let out = actx.destination;
-let osc1 = actx.createOscillator();
+// let osc1 = actx.createOscillator();
 let gain1 = actx.createGain();
 let filter = actx.createBiquadFilter();
 
-osc1.connect(gain1);
+// osc1.connect(gain1);
 gain1.connect(filter);
 filter.connect(out);
 
@@ -19,13 +20,12 @@ let nodes = [];
 // refactor useState hooks
 export function reducer(state, action ) {
     // if no payload
-    let {id, value, note, freq} = action.payload || {};
+    let {id, value, freq} = action.payload || {};
     switch(action.type){
         case 'MAKE_OSC':
-            const newOsc = new Osc(actx, "triangle ", freq, 0, null, gain1);
+            const newOsc = new Osc(actx, state.osc1Settings.type, freq, state.osc1Settings.detune, state.envelope, gain1);
             newOsc.start();
             nodes.push(newOsc);
-            console.log('make osc, note and freq: ', note, freq);
             return{ ...state };
         case 'KILL_OSC':
             let newNodes = [];
@@ -38,32 +38,13 @@ export function reducer(state, action ) {
                 }
             })
             nodes = newNodes;
-            console.log('make osc, note and freq: ', note, freq);
             return{ ...state };
-            
-        case 'START_OSC': 
-            osc1.start();
-            return { ...state }; 
-        case 'STOP_OSC':
-            osc1.stop();
-            return { ...state };
-        case 'CHANGE_OSC1':
-            osc1[id].value = value;
-            // return new state
+        case 'CHANGE_ADSR':
             return {
                     ...state, 
-                    osc1Settings: {
-                        ...state.osc1Settings, 
-                        [id]: value
-                    }
-                };
-        case 'CHANGE_OSC1_TYPE':
-            osc1.type = id;
-            return {
-                    ...state, 
-                    osc1Settings: {
-                        ...state.osc1Settings, 
-                        type: id
+                    envelope: {
+                        ...state.envelope, 
+                        [id]: Number(value)
                     }
                 };
         case 'CHANGE_FILTER':
@@ -83,7 +64,7 @@ export function reducer(state, action ) {
                         ...state.filterSettings, 
                         type: id
                     }
-                };
+                }
         default:
             console.log('reduce error, action: ', action);
             return { ...state };
@@ -94,9 +75,8 @@ export function reducer(state, action ) {
 export default function Store(props) {
     const stateHook = React.useReducer(reducer, {
         osc1Settings: {
-            frequency: osc1.frequency.value,
-            detune: osc1.detune.value,
-            type: osc1.type
+            detune: 0,
+            type: "sine"
         },
 
         filterSettings: {
@@ -106,6 +86,13 @@ export default function Store(props) {
             Q: filter.Q.value,
             gain: filter.gain.value
         },
+        
+        envelope: {
+            attack: 0.005,
+            decay: 0.1,
+            sustain: 0.6,
+            release: 0.1
+        }
     });
     return <CTX.Provider value={stateHook}>{props.children}</CTX.Provider>
 }

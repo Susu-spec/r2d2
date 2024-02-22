@@ -9,13 +9,14 @@ const Keyboard = () => {
     useEffect(() => {
         const keyboard = new QwertyHancock({
             id: "keyboard",
-            width: "374",
+            width: "373",
             height: "65",
             octaves: 2,
             startNote: 'C4',
         });
         keyboard.keyDown = (note, freq) => {
             updateState({ type: 'MAKE_OSC', payload: { note, freq } });
+
         }
         keyboard.keyUp = ( note, freq ) => {
             updateState({ type: 'KILL_OSC', payload: { note, freq }});

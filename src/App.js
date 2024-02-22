@@ -1,20 +1,24 @@
 import React from 'react';
-import Osc1 from "./components/Osc1";
 import Filter from "./components/Filter";
+import ADSR from "./components/ADSR";
 import Keyboard from "./components/Keyboard";
+import AnimatedText from './components/AnimatedText';
 
 import './App.scss'; 
 
 function App() {
+  const longText = "Hello, this is R2-D2. An interface that allows you alter the sound features of each keystroke.";
   return (
     <div className="App">
       <div className="background"></div>
       <div className="text-box">
         <h1>R2-D2</h1>
+        <AnimatedText text={longText} className="animated-text"></AnimatedText>
       </div>
-      <Osc1 /> 
+      <ADSR />
       <Filter />
       <Keyboard />
+      
     </div>
   );
 }

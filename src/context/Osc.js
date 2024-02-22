@@ -1,4 +1,3 @@
-// import React from 'react';
 export default class Osc {
     constructor(actx, type, frequency, detune, envelope, connection ) {
         this.actx = actx;
@@ -38,4 +37,5 @@ export default class Osc {
             this.osc.disconnect();
         }, 10000);
     }
+    
 }
