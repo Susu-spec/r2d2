@@ -30,7 +30,7 @@ export const ADSR = () => {
     const longText = `The ADSR component represents the amplitude profile of sound after time`;
 
   return (
-    <div className='control filter'>
+    <div className='control-one control filter'>
         <LightTooltip title={longText} arrow>
                 <h2>ADSR Envelope</h2>
         </LightTooltip>

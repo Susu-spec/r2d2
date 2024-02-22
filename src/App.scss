@@ -1,3 +1,21 @@
+$mobile-landscape: 375px;
+$tablet: 768px;
+$desktop: 992px;
+
+$breakpoints: (
+  "small": "(min-width: #{$mobile-landscape})",
+  "medium": "(min-width: #{$tablet})",
+  "large": "(min-width: #{$desktop})"
+);
+
+@mixin responsive($size) {
+    $query: map-get($breakpoints, $size);
+
+    @media #{$query} {
+        @content;
+    }
+}
+  
 *,*::before,
 *::after {
   margin: 0;
@@ -21,15 +39,25 @@ body {
       font-size: 3rem;
       text-shadow: 2px 2px 3px #f5f5f5;
     }
+    
     .sr-only {
       display: none;
     }
     .animated-text {
-      margin: .2rem;
+      margin: 1.2rem 0 0 0;
       font-family: 'Space mono', sans-serif;
-      width: 60%;
-      text-align: center;
+      width: 40%;
+      text-align: left;
+      font-size: 1.1rem;
+
+      @include responsive('small') {
+        width: 60%;
+      }
     }
+  }
+
+  .control-one {
+    margin: 1rem 0 !important;
   }
 
   .inline-blok {
@@ -62,8 +90,9 @@ body {
     text-align: center;
   }
   .control {
-      margin: 1.5rem 0;
+      margin: 2.4rem 0;
       h2 {
+      font-size: 2rem;
       margin: 0 0 .5rem 0;
       }
       .param {
@@ -80,6 +109,7 @@ body {
         }
         
       }
+      
       .param-filter {
         margin: .8rem 0 .4rem 0;
         

@@ -7,7 +7,7 @@ import AnimatedText from './components/AnimatedText';
 import './App.scss'; 
 
 function App() {
-  const longText = "Hello, this is R2-D2. An interface that allows you alter the sound features of each keystroke.";
+  const longText = "Hello, this is R2-D2. A Keyboard interface that allows you alter the sound features for each key on the keyboard.";
   return (
     <div className="App">
       <div className="background"></div>
