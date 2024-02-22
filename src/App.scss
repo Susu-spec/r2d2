@@ -46,12 +46,12 @@ body {
     .animated-text {
       margin: 1.2rem 0 0 0;
       font-family: 'Space mono', sans-serif;
-      width: 40%;
+      width: 50%;
       text-align: left;
       font-size: 1.1rem;
 
       @include responsive('small') {
-        width: 60%;
+        width: 70%;
       }
     }
   }
