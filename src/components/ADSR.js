@@ -20,37 +20,36 @@ export const LightTooltip = styled(({ className, ...props }) => (
         }));
 
 export const ADSR = () => {
-    const [appState, updateState] = useContext(CTX);
-    let { attack, decay, sustain, release } = appState.envelope;
-    const [open, setOpen] = React.useState({
-        attack: false,
-        decay: false,
-        sustain: false,
-        release: false
-    });
+        const [appState, updateState] = useContext(CTX);
+        let { attack, decay, sustain, release } = appState.envelope;
+        const [open, setOpen] = React.useState({
+                attack: false,
+                decay: false,
+                sustain: false,
+                release: false
+        });
     
- const handleTooltipClose = (id) => {
-        setOpen(open => ({
-                ...open,
-                [id]: false
-        }));
-    };
+        const handleTooltipClose = (id) => {
+                setOpen(open => ({
+                        ...open,
+                        [id]: false
+                }));
+        }
     
-    const handleTooltipOpen = (id) => {
-        setOpen(open => ({
-            ...open,
-            [id]: true
-        }));
-        console.log("id and value: ", id, open[id]);
-    };
+        const handleTooltipOpen = (id) => {
+                setOpen(open => ({
+                        ...open,
+                        [id]: true
+                }));
+        }
     
-    const change = (e) => {
-        let { id, value } = e.target;
-        updateState({ type: "CHANGE_ADSR", payload: { id, value } });
-    }
+        const change = (e) => {
+                let { id, value } = e.target;
+                updateState({ type: "CHANGE_ADSR", payload: { id, value } });
+        }
 
 
-    const longText = `The ADSR component represents the amplitude profile of sound after time`;
+        const longText = `The ADSR component represents the amplitude profile of sound after time`;
 
   return (
     <div className='control-one control filter'>
@@ -61,7 +60,7 @@ export const ADSR = () => {
                 <ClickAwayListener onClickAway={() => handleTooltipClose('attack')}>
                         <LightTooltip onClose={() => handleTooltipClose('attack')}
                                 open={open.attack}
-                                title="length of time between keyboard press and maximum gain level">
+                                title="length of time between key press and maximum gain level">
                                 <h3 onClick={() => handleTooltipOpen('attack')}>Attack</h3>
                         </LightTooltip>
                 </ClickAwayListener>
@@ -101,4 +100,4 @@ export const ADSR = () => {
   )
 }
 
-export default ADSR;
+export default ADSR

@@ -15,7 +15,7 @@ const Filter = () => {
         Q: false
     });
     
- const handleTooltipClose = (id) => {
+    const handleTooltipClose = (id) => {
         setOpen(open => ({
                 ...open,
                 [id]: false

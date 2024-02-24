@@ -23,33 +23,4 @@ function App() {
   );
 }
 
-export default App;
-
-// const [filterSettings, setFilterSettings] = useState({
-  
-// });
-
-// const changeOsc1 = (e) => {
-//   let {value, id} = e.target;
-//   setOsc1settings({...osc1settings, [id]: value});
-//   osc1[id].value = value;
-// }
-
-// const changeOsc1Type = (e) => {
-//   let { id } = e.target;
-//   osc1.type = id;
-//   setOsc1settings({...osc1settings, type: id});
-// }
-
-
-// const changeFilter = (e) => {
-//   let {value, id} = e.target;
-//   setFilterSettings({...filterSettings, [id]: value});
-//   filter[id].value = value;
-// }
-
-// const changeFilterType = (e) => {
-//   let { id } = e.target;
-//   filter.type = id;
-//   setFilterSettings({...filterSettings, type: id});
-// }
+export default App
