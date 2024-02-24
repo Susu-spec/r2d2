@@ -17,8 +17,6 @@ const defaultAnimations = {
 
 const AnimatedText = (AnimatedTextProps) => {
     let { text, className} = AnimatedTextProps;
-    // const ref = useRef(null);
-    // const isInView = useInView(ref, { amount: 0.5 });
     return (
     <p className={className}>
         <span className='sr-only'>{text}</span>
@@ -33,21 +31,13 @@ const AnimatedText = (AnimatedTextProps) => {
                                 {char}
                             </motion.span>
                         )}
-                          
-                    </span>
-                    
-                    
-                   
+                    </span> 
                 )}
-                {/* <span className='cursor inline-block'></span> */}
         </motion.span>
+        <span>.</span>
     </p>
   )
 }
 
-//
-// ref={ref}
 
 export default AnimatedText
-
-// animate={ isInView ? "visible" : "hidden"}
