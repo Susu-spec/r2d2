@@ -1,14 +1,11 @@
 import React from "react";
 import Osc from './Osc';
-// import ADSR from './ADSR';
 
 let actx = new AudioContext();
 let out = actx.destination;
-// let osc1 = actx.createOscillator();
 let gain1 = actx.createGain();
 let filter = actx.createBiquadFilter();
 
-// osc1.connect(gain1);
 gain1.connect(filter);
 filter.connect(out);
 
@@ -17,10 +14,9 @@ export { CTX };
 
 let nodes = [];
 
-// refactor useState hooks
 export function reducer(state, action ) {
     // if no payload
-    let {id, value, freq} = action.payload || {};
+    let {id, value, freq, boolean} = action.payload || {};
     switch(action.type){
         case 'MAKE_OSC':
             const newOsc = new Osc(actx, state.osc1Settings.type, freq, state.osc1Settings.detune, state.envelope, gain1);
@@ -45,6 +41,10 @@ export function reducer(state, action ) {
                     envelope: {
                         ...state.envelope, 
                         [id]: Number(value)
+                    },
+                    adsrSettings: {
+                        ...state.adsrSettings,
+                        [id]: boolean
                     }
                 };
         case 'CHANGE_FILTER':
@@ -64,12 +64,11 @@ export function reducer(state, action ) {
                         ...state.filterSettings, 
                         type: id
                     }
-                }
+                };
         default:
             console.log('reduce error, action: ', action);
             return { ...state };
-    }
-   
+    } 
 }
 
 export default function Store(props) {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 
+
 const defaultAnimations = {
     hidden: {
         opacity: 0
