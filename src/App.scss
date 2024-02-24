@@ -89,6 +89,7 @@ body {
     width: 100%;
     text-align: center;
   }
+  
   .control {
       margin: 2.4rem 0;
       h2 {
@@ -122,12 +123,15 @@ body {
         border: #575757;
       }
       .param-button {
-        margin: 2rem .2rem 3.8rem .2rem;
+        margin: 1rem .2rem .5rem .2rem;
         button {
           margin: .6rem;
         }
       }
-
+      .param-gain {
+        margin: .8rem 0 5rem 0;
+        
+      }
     }
     .keyboard {
       width: 100%;
