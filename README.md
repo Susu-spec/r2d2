@@ -9,4 +9,4 @@ An audio customization GUI created with [React.js](https://react.dev/) and [SCSS
 - Qwerty Hancock
 
 ## General Notes
-> This audio based project was a very fun project. React's design principles were hard to follow at first but as all things got easier over time.
+> This was actually fun to build. React's design principles were hard to follow at first but as all things got easier over time.
